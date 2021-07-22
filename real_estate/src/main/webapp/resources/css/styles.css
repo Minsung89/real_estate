@@ -1,6 +1,5 @@
 @charset "UTF-8";
 /*!
-<<<<<<< HEAD
 * Start Bootstrap - Business Frontpage v5.0.2 (https://startbootstrap.com/template/business-frontpage)
 * Copyright 2013-2021 Start Bootstrap
 * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-business-frontpage/blob/master/LICENSE)
@@ -2978,9 +2977,7 @@ textarea.form-control-lg {
 }
 
 .btn-secondary {
-  color: #fff;
-  background-color: #9C9C9C;
-  border-color: #9C9C9C;
+
 }
 .btn-secondary:hover {
   color: #fff;
@@ -3849,6 +3846,9 @@ textarea.form-control-lg {
 }
 
 .nav-link {
+  font-weight: bold;
+  font-style: normal;
+  font-size: 25px;
   display: block;
   padding: 0.5rem 1rem;
   color: #0d6efd;
@@ -3858,6 +3858,7 @@ textarea.form-control-lg {
 @media (prefers-reduced-motion: reduce) {
   .nav-link {
     transition: none;
+   
   }
 }
 .nav-link:hover, .nav-link:focus {
@@ -3944,6 +3945,7 @@ textarea.form-control-lg {
   justify-content: space-between;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
+  border-radius: 0px;
 }
 .navbar > .container,
 .navbar > .container-fluid,
@@ -3964,6 +3966,10 @@ textarea.form-control-lg {
   font-size: 2rem;
   text-decoration: none;
   white-space: nowrap;
+}
+.navbar-brand img {
+	width: auto;
+	height: 100%;
 }
 .navbar-nav {
   display: flex;
@@ -4226,10 +4232,11 @@ textarea.form-control-lg {
   color: #fff;
 }
 .navbar-dark .navbar-nav .nav-link {
-  color: rgba(255, 255, 255, 0.55);
+  color: rgba(255, 255, 255);
 }
 .navbar-dark .navbar-nav .nav-link:hover, .navbar-dark .navbar-nav .nav-link:focus {
   color: rgba(255, 255, 255, 0.75);
+  text-decoration:none;
 }
 .navbar-dark .navbar-nav .nav-link.disabled {
   color: rgba(255, 255, 255, 0.25);
@@ -7420,7 +7427,6 @@ textarea.form-control-lg {
 .bg-dark {
   background-color: #212529 !important;
 }
-
 .bg-body {
   background-color: #fff !important;
 }
@@ -10834,6 +10840,15 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+.my-footer {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  background-color: #2c3e50;
+  color: #fff;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}
 .feature {
   display: inline-flex;
   align-items: center;
@@ -10841,11 +10856,7 @@ textarea.form-control-lg {
   height: 4rem;
   width: 4rem;
   font-size: 2rem;
-=======
-* Start Bootstrap - Freelancer v7.0.2 (https://startbootstrap.com/theme/freelancer)
-* Copyright 2013-2021 Start Bootstrap
-* Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-freelancer/blob/master/LICENSE)
-*/
+}
 /*!
  * Bootstrap v5.0.1 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors
@@ -13820,9 +13831,9 @@ textarea.form-control-lg {
 }
 
 .btn-secondary {
-  color: #fff;
-  background-color: #2c3e50;
-  border-color: #2c3e50;
+   color: #fff;
+  background-color: #9C9C9C;
+  border-color: #9C9C9C;
 }
 .btn-secondary:hover {
   color: #fff;
@@ -15067,9 +15078,7 @@ textarea.form-control-lg {
 .navbar-dark .navbar-brand:hover, .navbar-dark .navbar-brand:focus {
   color: #fff;
 }
-.navbar-dark .navbar-nav .nav-link {
-  color: rgba(255, 255, 255, 0.55);
-}
+
 .navbar-dark .navbar-nav .nav-link:hover, .navbar-dark .navbar-nav .nav-link:focus {
   color: rgba(255, 255, 255, 0.75);
 }
@@ -16348,6 +16357,7 @@ textarea.form-control-lg {
     border-radius: 0;
   }
 }
+
 .tooltip {
   position: absolute;
   z-index: 1080;
@@ -21886,14 +21896,10 @@ html {
   }
 }
 
-.footer {
-  padding-top: 5rem;
-  padding-bottom: 5rem;
-  background-color: #2c3e50;
-  color: #fff;
-}
+
 
 .copyright {
   background-color: #1a252f;
->>>>>>> refs/remotes/origin/main
 }
+
+

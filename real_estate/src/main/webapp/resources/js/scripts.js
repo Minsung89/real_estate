@@ -1,16 +1,15 @@
 /*!
-<<<<<<< HEAD
 * Start Bootstrap - Business Frontpage v5.0.2 (https://startbootstrap.com/template/business-frontpage)
 * Copyright 2013-2021 Start Bootstrap
 * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-business-frontpage/blob/master/LICENSE)
 */
 // This file is intentionally blank
 // Use this file to add JavaScript to your project
-=======
-* Start Bootstrap - Freelancer v7.0.2 (https://startbootstrap.com/theme/freelancer)
-* Copyright 2013-2021 Start Bootstrap
-* Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-freelancer/blob/master/LICENSE)
-*/
+//=======
+//* Start Bootstrap - Freelancer v7.0.2 (https://startbootstrap.com/theme/freelancer)
+//* Copyright 2013-2021 Start Bootstrap
+//* Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-freelancer/blob/master/LICENSE)
+//*/
 //
 // Scripts
 // 
@@ -60,4 +59,3 @@ window.addEventListener('DOMContentLoaded', event => {
     });
 
 });
->>>>>>> refs/remotes/origin/main

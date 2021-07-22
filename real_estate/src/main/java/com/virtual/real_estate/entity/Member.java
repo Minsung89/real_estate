@@ -1,11 +1,16 @@
 package com.virtual.real_estate.entity;
 
+import javax.management.relation.Role;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.GenericGenerator;
 
 import lombok.Data;
 
@@ -15,9 +20,8 @@ import lombok.Data;
 public class Member {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "user_id")
-	private String useId;
+	private String userId;
 
 	@Column(name = "pass")
 	private String pass;
@@ -45,5 +49,9 @@ public class Member {
 
 	@Column(name = "ph_number")
 	private String phNumber;
+	
+	@Column(name = "auth_id")
+	private String authId;
 
+	
 }
