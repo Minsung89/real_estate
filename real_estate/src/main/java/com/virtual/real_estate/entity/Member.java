@@ -1,16 +1,10 @@
 package com.virtual.real_estate.entity;
 
-import javax.management.relation.Role;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.GenericGenerator;
 
 import lombok.Data;
 
@@ -52,6 +46,13 @@ public class Member {
 	
 	@Column(name = "auth_id")
 	private String authId;
-
 	
+	@Column(name = "nation")
+	private String nation;
+	
+	@Column(name = "description")
+	private String description;
+	
+	@Column(name = "referral_code")
+	private String referralCode;
 }
