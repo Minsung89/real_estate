@@ -5,11 +5,14 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.DynamicInsert;
 
 import lombok.Data;
 
 @Data
 @Entity
+@DynamicInsert
 @Table(name = "member")
 public class Member {
 
@@ -44,8 +47,14 @@ public class Member {
 	@Column(name = "ph_number")
 	private String phNumber;
 	
-	@Column(name = "auth_id")
-	private String authId;
+	@Column(name = "authority")
+	private String authority;
+	
+	@Column(name = "auth_state")
+	@ColumnDefault("N")
+	private String authState;
+	
+	private String authKey;
 	
 	@Column(name = "nation")
 	private String nation;
