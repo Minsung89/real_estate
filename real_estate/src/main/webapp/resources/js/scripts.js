@@ -57,5 +57,16 @@ window.addEventListener('DOMContentLoaded', event => {
             }
         });
     });
-
+    
+    console.log("들어오는거지?");
+    
+    $('#p-save').click(function() {
+    	if($('input[name=pass]').val() == null || $('input[name=pass]').val() == ''){
+    		return
+    	}
+    	console.log($('input[name=nickname]').val());
+    	console.log($('input[name=pass]').val());
+    	console.log($('input[name=description]').val());
+    	console.log($('input[name=nation]').val());
+	});
 });

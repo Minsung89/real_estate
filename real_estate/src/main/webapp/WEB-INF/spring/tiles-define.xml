@@ -20,14 +20,8 @@
 		<put-attribute name="footer" value="/WEB-INF/views/tiles/template/footer.jsp" />
 	</definition>
 	
-   	<definition name="/member/*" extends="sidebar-base">
-        <put-attribute name="body" value="/WEB-INF/views/member/{1}.jsp" />
-    </definition>
-    <definition name="/member/login" extends="base">
-     	<put-attribute name="body" value="/WEB-INF/views/member/login.jsp" />
-    </definition>
-    <definition name="/member/signup" extends="base">
-     	<put-attribute name="body" value="/WEB-INF/views/member/signup.jsp" />
+   	<definition name="/member/*/*" extends="sidebar-base">
+        <put-attribute name="body" value="/WEB-INF/views/member/{1}/{2}.jsp" />
     </definition>
 	<definition name="*" extends="base">
         <put-attribute name="body" value="/WEB-INF/views/{1}.jsp" />

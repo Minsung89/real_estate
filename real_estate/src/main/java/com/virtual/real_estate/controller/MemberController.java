@@ -33,7 +33,6 @@ public class MemberController {
 	public String sigup(Member member) {
 	
 		customUserDetailService.save(member);
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"+member.toString());
 		return "redirect:/login";
 	}
 	
@@ -41,44 +40,39 @@ public class MemberController {
     public String loginPage() {
         return "/member/login"; 
     }
-//	
-//	@PostMapping("/loginAuth")
-//    public String login(Model model, Authentication authentication ) {
-//		System.out.println("11111111111111111111111"+authentication.toString());
-////		MyUserDetail myUserDetail = (MyUserDetail)authentication.getPrincipal();
-////		model.addAttribute("userId", myUserDetail.getUsername());
-//		
-//        return "index"; 
-//    }
-//	
+
 	@GetMapping("/logout")
 	  public String logoutPage(HttpServletRequest request, HttpServletResponse response) {
 	    new SecurityContextLogoutHandler().logout(request, response, SecurityContextHolder.getContext().getAuthentication());
 	    return "redirect:/login";
 	  }
 	
-	
-	@RequestMapping("/assets")
-    public String assets(Model model) {
-		
-        return "/member/assets"; 
+	@GetMapping("/forgot-password")
+    public String forgotPassword() {
+        return "/member/forgot_password"; 
     }
-	
-	@RequestMapping("/wallet")
-    public String wallet(Model model) {
-		
-        return "/member/wallet"; 
-    }
-	
-	@RequestMapping("/my_profile")
+
+	@GetMapping("/my_profile")
     public String myProfile(Model model) {
 		
-        return "/member/my_profile"; 
+        return "/member/my_profile/my_profile"; 
     }
 	
-	@RequestMapping("/settings")
+	@GetMapping("/my_profile/edit")
+    public String myProfileEdit(Model model) {
+		
+        return "/member/my_profile/my_profile_edit"; 
+    }
+	
+	@GetMapping("/settings")
     public String setting(Model model) {
 		
-        return "/member/settings"; 
+        return "/member/settings/settings"; 
+    }
+	
+	@GetMapping("/alarm")
+    public String alarm(Model model) {
+		
+        return "/member/alarm"; 
     }
 }

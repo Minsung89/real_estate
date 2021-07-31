@@ -34,7 +34,8 @@
 	              		<li class="nav-item"><a class="nav-link" href="<c:url value='/signup' />"><button class="btn btn-secondary btn-sm px-2">Sign-up</button></a></li>
                 	</sec:authorize>
                		<sec:authorize access="isAuthenticated()">
- 	              		<li class="nav-item"><a class="nav-link" href="<c:url value='/my_profile' />"><img src="${pageContext.request.contextPath}/resources/assets/image/profile_icon.png" style="height: 20px; width: 20px;"/></a></li>
+                  		<li class="nav-item"><a class="nav-link" href="/"><sec:authentication property="principal.point"/>VP</a></li>
+ 	              		<li class="nav-item"><a class="nav-link" href="<c:url value='/my_profile' />"><img src="${pageContext.request.contextPath}/resources/assets/image/profile_icon.png" style="height: 20px; width: 20px; margin-left: 40px;"/></a></li>
         	       		<li class="nav-item"><a class="nav-link" href="<c:url value='/logout' />"><button class="btn btn-secondary btn-sm px-2">Logout</button></a></li>
                		</sec:authorize>
                		<li class="nav-item"><a class="nav-link" href="<c:url value='/' />"><img src="${pageContext.request.contextPath}/resources/assets/image/language_icon.png" style="height: 20px; width: 20px;"/></a></li>

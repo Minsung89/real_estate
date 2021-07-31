@@ -22,9 +22,17 @@ public class CustomUserDetailService implements UserDetailsService{
 	public UserDetails loadUserByUsername(String userId) throws UsernameNotFoundException { //로그인 시
 		
 		Member member = memberRepository.findByUserId(userId);
+		
 		if(member == null)
             throw new UsernameNotFoundException("사용자가 입력한 아이디에 해당하는 사용자를 찾을 수 없습니다.");
-		
+		//test 데이터
+		member.setPoint("1000");
+		member.setNickname("또이");
+		member.setEMail("minsung0217@gmail.com");
+		member.setAddress("양주시");
+		member.setPhNumber("010-5319-4080");
+		member.setNation("Korea");
+
 		return new MyUserDetail(member);
 	}
 	

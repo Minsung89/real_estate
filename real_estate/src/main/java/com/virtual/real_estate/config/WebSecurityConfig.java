@@ -24,7 +24,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
-				.antMatchers("/", "/signup", "/login", "/loginAuth","/notice", "/notice/faq/**", "/notice/nontification/**", "/resources/css/**", "/resources/assets/**", "/resources/js/**").permitAll() // 누구나 접근 허용
+				.antMatchers("/", "/signup", "/login",
+						"/loginAuth","/notice", "/forgot-password",
+						"/notice/faq/**", "/notice/nontification/**",
+						"/resources/css/**", "/resources/assets/**", "/resources/js/**")
+				.permitAll() // 누구나 접근 허용
 				.anyRequest().authenticated()
 	        .and()
 	        	.formLogin()
