@@ -12,16 +12,24 @@
 		<put-attribute name="footer" value="/WEB-INF/views/tiles/template/footer.jsp" />
 	</definition>
 	
+	<definition name="no-footer-base" template="/WEB-INF/views/tiles/layout/no-footer-base-layout.jsp">
+		<put-attribute name="header" value="/WEB-INF/views/tiles/template/header.jsp" />
+		<put-attribute name="nav" value="/WEB-INF/views/tiles/template/nav.jsp" />
+		<put-attribute name="bady" value="" />
+	</definition>
+	
 	<definition name="sidebar-base" template="/WEB-INF/views/tiles/layout/sidebar-base-layout.jsp">
 		<put-attribute name="header" value="/WEB-INF/views/tiles/template/header.jsp" />
 		<put-attribute name="nav" value="/WEB-INF/views/tiles/template/nav.jsp" />
 		<put-attribute name="sidebar" value="/WEB-INF/views/tiles/template/sidebar.jsp" />
 		<put-attribute name="bady" value="" />
-		<put-attribute name="footer" value="/WEB-INF/views/tiles/template/footer.jsp" />
 	</definition>
 	
    	<definition name="/member/*/*" extends="sidebar-base">
         <put-attribute name="body" value="/WEB-INF/views/member/{1}/{2}.jsp" />
+    </definition>
+    <definition name="/member/*" extends="no-footer-base">
+        <put-attribute name="body" value="/WEB-INF/views/member/{1}.jsp" />
     </definition>
 	<definition name="*" extends="base">
         <put-attribute name="body" value="/WEB-INF/views/{1}.jsp" />

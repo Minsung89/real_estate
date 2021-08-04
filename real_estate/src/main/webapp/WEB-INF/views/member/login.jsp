@@ -2,7 +2,7 @@
     pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"  %>
-	<main class="py-md-3 pl-md-5 bd-content container-fluid"role="main">
+	<main class="container"role="main">
 		<h1>Login</h1> 
 		<div class="col-xs-5" style="padding: 10px 50px 10px 50px">
 		    <form action="<c:url value='/loginAuth' />" method="POST" >
