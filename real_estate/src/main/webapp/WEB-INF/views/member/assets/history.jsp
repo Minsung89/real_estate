@@ -29,18 +29,18 @@
 			        </c:when>
 					<c:otherwise>
 			            <c:forEach var ="i" items = "${data }">
-					<tr>
-					   <td>${i.sort}</td>
-					   <td>${i.nation}</td>
-					   <td></td>
-					   <td>${i.assetName}</td>
-					   <td>${i.data}</td>
-					   <td>${i.price}</td>
-					   <td>${i.deal}</td>
-					   <td>${i.grade}</td>
-					   <td>${i.proceeds}</td>
-					</tr>
-				</c:forEach>
+							<tr>
+							   <td>${i.sort}</td>
+							   <td>${i.nation}</td>
+							   <td></td>
+							   <td>${i.assetName}</td>
+							   <td>${i.data}</td>
+							   <td>${i.price}</td>
+							   <td>${i.deal}</td>
+							   <td>${i.grade}</td>
+							   <td>${i.proceeds}</td>
+							</tr>
+						</c:forEach>
 					</c:otherwise>
 				</c:choose>
 			</tbody> 

@@ -20,13 +20,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	@Autowired
 	@Qualifier(value = "customUserDetailService")
 	private UserDetailsService customUserDetailService;
-	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
 				.antMatchers("/", "/signup", "/login",
 						"/loginAuth","/notice", "/forgot-password",
 						"/notice/faq/**", "/notice/nontification/**",
+						"/about/**",
 						"/resources/css/**", "/resources/assets/**", "/resources/js/**")
 				.permitAll() // 누구나 접근 허용
 				.anyRequest().authenticated()
