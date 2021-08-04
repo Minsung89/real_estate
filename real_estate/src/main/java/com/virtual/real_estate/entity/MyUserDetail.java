@@ -14,7 +14,7 @@ public class MyUserDetail implements UserDetails{
 	private static final long serialVersionUID = 1L;
 	private String userId;
 	private String pass;
-	private String authId;
+	private String authority;
 	private String nickname;
 	private String address;
 	private String eMail;
@@ -23,23 +23,26 @@ public class MyUserDetail implements UserDetails{
 	private String secessionState;
 	private String phNumber;
 	private String nation;
-	
+	private String authState;
+	private String referralCode;
 	
 	public MyUserDetail(Member member) {
 		this.userId = member.getUserId();
 		this.pass = member.getPass();
-		this.authId = member.getAuthId();
+		this.authority = member.getAuthority();
 		this.nickname = member.getNickname();
 		this.address = member.getAddress();
 		this.eMail = member.getEMail();
 		this.point = member.getPoint();
 		this.phNumber = member.getPhNumber();
 		this.nation = member.getNation();
+		this.authState = member.getAuthState();
+		this.referralCode = member.getReferralCode();
 	}
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return Collections.singletonList(new SimpleGrantedAuthority(this.authId));
+		return Collections.singletonList(new SimpleGrantedAuthority(this.authority));
 	}
 
 	@Override
@@ -99,4 +102,13 @@ public class MyUserDetail implements UserDetails{
 		return nation;
 	}
 
+	public String getAuthState() {
+		return authState;
+	}
+
+	public String getReferralCode() {
+		return referralCode;
+	}
+
+	
 }

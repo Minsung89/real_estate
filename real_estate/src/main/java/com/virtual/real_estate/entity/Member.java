@@ -54,6 +54,7 @@ public class Member {
 	@ColumnDefault("N")
 	private String authState;
 	
+	@Column(name = "auth_key")
 	private String authKey;
 	
 	@Column(name = "nation")

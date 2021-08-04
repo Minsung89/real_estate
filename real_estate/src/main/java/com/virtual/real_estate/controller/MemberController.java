@@ -1,5 +1,7 @@
 package com.virtual.real_estate.controller;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -12,16 +14,21 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.virtual.real_estate.entity.Member;
 import com.virtual.real_estate.entity.MyUserDetail;
 import com.virtual.real_estate.service.CustomUserDetailService;
+import com.virtual.real_estate.service.MailSendService;
 
 @Controller
 public class MemberController {
 	
 	@Autowired
 	CustomUserDetailService customUserDetailService;
+    @Autowired
+    private MailSendService mss;
 	
 	@GetMapping("/signup")
     public String signup() {
@@ -35,6 +42,24 @@ public class MemberController {
 		customUserDetailService.save(member);
 		return "redirect:/login";
 	}
+//	
+//	@PostMapping(""){
+//		
+//		/임의의 authKey 생성 & 이메일 발송
+//        String authKey = mss.sendAuthMail(member.getEMail());
+//        member.setAuthKey(authKey);
+//
+//        Map<String, String> map = new HashMap<String, String>();
+//        map.put("email", memberDTO.getEmail());
+//        map.put("authKey", memberDTO.getAuthKey());
+//        System.out.println(map);
+//
+//      //DB에 authKey 업데이트
+//      memberService.updateAuthKey(map);
+//		
+//		
+//	}
+	
 	
 	@GetMapping("/login")
     public String loginPage() {
@@ -63,6 +88,34 @@ public class MemberController {
 		
         return "/member/my_profile/my_profile_edit"; 
     }
+	@ResponseBody
+	@PostMapping("my_profile/auth-email")
+	public void myProfileAuthEmail(@RequestParam Map<String, Object> param) {
+		//임의의 authKey 생성 & 이메일 발송
+		String email = String.valueOf( (String) param.get("email"));
+		System.out.println("email=" + email);
+		String authKey = mss.sendAuthMail("luigeboy@gmail.com");
+		System.out.println(authKey);
+//      member.setAuthKey(authKey);
+
+
+//      Map<String, String> map = new HashMap<String, String>();
+//      map.put("email", memberDTO.getEmail());
+//      map.put("authKey", memberDTO.getAuthKey());
+//      System.out.println(map);
+
+    //DB에 authKey 업데이트
+//    memberService.updateAuthKey(map);
+	}
+	@ResponseBody
+	@GetMapping("my_profile/auth-success")
+	public void myProfileAuthSuccess(@RequestParam Map<String, Object> param) {
+		 //email, authKey 가 일치할경우 authStatus 업데이트
+		String email = String.valueOf( (String) param.get("email"));
+	
+	}
+	
+	
 	
 	@GetMapping("/settings")
     public String setting(Model model) {
