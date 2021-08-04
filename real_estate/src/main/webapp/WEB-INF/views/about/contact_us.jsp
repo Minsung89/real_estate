@@ -4,7 +4,11 @@
 <!DOCTYPE html>
 <html lang="en">
  <!-- Header-->
-     <main class="col-9 py-md-3 pl-md-5 bd-content" role="main">
+     <main class="ct-content" role="main">
 		<h1>Contact us</h1>
+		<hr>
+		<div class="container">
+			<h3>subject</h3>
+		</div>
      </main>
 </html>

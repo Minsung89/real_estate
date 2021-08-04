@@ -18,8 +18,8 @@
 						<dl>
 							<dt>About</dt>
 							<dd><a href="<c:url value='/about/about_2verse' />">About 2verse</a></dd>
-							<dd><a href="<c:url value='/about/contact_us' />">Updates</a></dd>
-							<dd><a href="<c:url value='/about/update' />">Contact us</a></dd>
+							<dd><a href="<c:url value='/about/update' />">Updates</a></dd>
+							<dd><a href="<c:url value='/about/contact_us' />">Contact us</a></dd>
 						</dl>
 					</div>
 					<div class="col">
