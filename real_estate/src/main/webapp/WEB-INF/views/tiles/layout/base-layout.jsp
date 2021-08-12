@@ -15,6 +15,7 @@
 		</nav>
 	 		<tiles:insertAttribute name="body"/>
 		 <!-- Footer-->
+		 <!--  <div style="background-color: #212529; width: 100%; height: 50px; position: absolute; bottom: 0; filter: brightness(50%)"></div> -->
 	    <footer class="py-5 bg-dark my-footer">
 			<tiles:insertAttribute name="footer"/>
 	    </footer>

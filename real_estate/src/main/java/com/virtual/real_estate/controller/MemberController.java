@@ -40,7 +40,21 @@ public class MemberController {
 	public String sigup(Member member) {
 	
 		customUserDetailService.save(member);
-		return "redirect:/login";
+		System.out.println(member.toString());
+		return "redirect:/signup-success";
+	}
+	
+	@GetMapping("/signup-success")
+	public String signupSuccess() {
+	
+		return "/member/signup-success";
+	}
+	
+	@ResponseBody
+	@PostMapping("/signup/id-check")
+	public Boolean idCheck(@RequestParam Map<String, Object> param) {
+		System.out.println(param.get("userId").toString());
+		return customUserDetailService.isMember(param.get("userId").toString());
 	}
 //	
 //	@PostMapping(""){
@@ -66,6 +80,11 @@ public class MemberController {
         return "/member/login"; 
     }
 
+	@PostMapping("/login")
+    public String loginPagePost() {
+        return "/member/login"; 
+    }
+	
 	@GetMapping("/logout")
 	  public String logoutPage(HttpServletRequest request, HttpServletResponse response) {
 	    new SecurityContextLogoutHandler().logout(request, response, SecurityContextHolder.getContext().getAuthentication());
@@ -94,7 +113,7 @@ public class MemberController {
 		//임의의 authKey 생성 & 이메일 발송
 		String email = String.valueOf( (String) param.get("email"));
 		System.out.println("email=" + email);
-		String authKey = mss.sendAuthMail("luigeboy@gmail.com");
+		String authKey = mss.sendAuthMail("minsung021@naver.com");
 		System.out.println(authKey);
 //      member.setAuthKey(authKey);
 

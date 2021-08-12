@@ -6,9 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class NoticeController {
-//	'/faq_list' />">FAQ</
-//	'/qna_list' />">1:1</
-//	'/nontification_list'
+
 	@RequestMapping("/notice/faq")
     public String faq() {
         return "/real_estate/notice_list/faq_list"; 

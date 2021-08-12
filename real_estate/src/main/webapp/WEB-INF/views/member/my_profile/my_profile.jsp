@@ -45,4 +45,5 @@
 			</c:choose>
 		</p>
 		<a href="<c:url value='/my_profile/edit' />">edit</a>
+		<div id="msgStack"></div>
 	</main>

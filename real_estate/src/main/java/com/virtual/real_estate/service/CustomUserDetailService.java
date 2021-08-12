@@ -1,7 +1,8 @@
 package com.virtual.real_estate.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -17,7 +18,9 @@ public class CustomUserDetailService implements UserDetailsService {
 
 	@Autowired
 	MemberRepository memberRepository;
-
+	@Autowired
+	UsersService users;
+	
 	@Override
 	public UserDetails loadUserByUsername(String userId) throws UsernameNotFoundException { // 로그인 시
 
@@ -25,16 +28,12 @@ public class CustomUserDetailService implements UserDetailsService {
 		
 		if (member == null)
 			throw new UsernameNotFoundException("사용자가 입력한 아이디에 해당하는 사용자를 찾을 수 없습니다.");
-//		// test 데이터
-//		member.setPoint("1000");
-//		member.setNickname("또이");
-//		member.setEMail("minsung0217@gmail.com");
-//		member.setAddress("양주시");
-//		member.setPhNumber("010-5319-4080");
-//		member.setNation("Korea");
-//		member.setAuthority("USER");
-//		member.setAuthState("N");
-//		
+		users.userAdd(userId);
+		
+		List<String> u = users.userAll();
+		for (int i = 0; i < u.size(); i++) {
+			System.out.println(u.get(i));
+		}
 		System.out.println(member.toString());
 		
 //		memberRepository.save(member);
@@ -48,7 +47,7 @@ public class CustomUserDetailService implements UserDetailsService {
 		BCryptPasswordEncoder bEncoder = new BCryptPasswordEncoder();
 		member.setPass(bEncoder.encode(member.getPass()));
 		try {
-			member.setAuthority("USER");
+			member.setEMail(member.getUserId());
 			memberRepository.save(member);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -56,5 +55,13 @@ public class CustomUserDetailService implements UserDetailsService {
 		}
 		return true;
 	}
+	
+	public Boolean isMember(String userId) {//아이디 중복 체크
+		Member m = memberRepository.findByUserId(userId);
+		if (m != null) 
+			return false;
+		return true;
+	}
+	
 	
 }

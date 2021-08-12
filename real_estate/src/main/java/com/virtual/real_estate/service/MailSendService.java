@@ -55,7 +55,7 @@ public class MailSendService {
 		    .append(authKey)
 		    .append("' target='_blenk'>Verify Email Address</a>")
 		    .toString());
-		    sendMail.setFrom("minsung0217@gmail.com", "ADMIN");
+		    sendMail.setFrom("minsung0217@gmail.com", "admin");
 		    sendMail.setTo(email);
 		    sendMail.send();
 		} catch (MessagingException e) {

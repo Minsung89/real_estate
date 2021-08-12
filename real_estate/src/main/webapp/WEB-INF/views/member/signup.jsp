@@ -8,27 +8,33 @@
 		    <form action="<c:url value='/signup' />" method="POST" style="margin-bottom: 0;">
 		  	    <div class="form-group">
 					<label for="userId">E-mail</label>
-   					<input type="email" class="form-control" id="userId" name="userId" placeholder="Please enter your email">
+   					<input type="email" class="form-control signup-validation" id="userId" name="userId" placeholder="Please enter your email">
+   					<span class="signup-validation-paragraph" id="userId-vp">* Please enter a valid email</span>
 				</div>
 		      	<div class="form-group">
 				    <label for="password">Password</label>
-				    <input type="password" class="form-control" id="password" name="pass" placeholder="password">
+				    <input type="password" class="form-control signup-validation" id="password" name="pass" placeholder="password" autocomplete="off">
+				    <span class="signup-validation-paragraph" id="password-vp">* Please enter at least 10 characters, <br/>
+  						  including uppercase/lowercase and special characters</span>
 			    </div>
 			    <div class="form-group">
 				    <label for="confirmpassword">Confirm Password</label>
-				    <input type="password" class="form-control" id="confirmpassword">
+				    <input type="password" class="form-control signup-validation" id="confirmpassword" autocomplete="off">
+				     <span class="signup-validation-paragraph"  id="confirmpassword-vp">* do not match<br/></span>
 			    </div>
 			    <div class="form-group">
 				    <label for="nickname">Nick name</label>
-				    <input type="text" class="form-control" id="nickname" name="nickname">
+				    <input type="text" class="form-control signup-validation" id="nickname" name="nickname">
+				    <span class="signup-validation-paragraph" id="nickname-vp">* Nickname In use</span>
 			    </div>
 			    <div class="form-group">
 			   		<label>Terms and Condition </label><br>
 				    <input  type="checkbox" id="terms-checkbox">
-				    <label  for="terms-checkbox" style="user-select:none">I agree to 2Verse Privacy Policy & Terms.</label>
+				    <label  for="terms-checkbox" style="user-select:none">I agree to 2Verse <a href="#">Privacy Policy</a> & <a href="#">Terms.</a></label>
 			    </div>
 			   	<hr style="margin-bottom: 30px; background-color: #111; height: 2px; border-radius: 20px">
-		      <button type="submit" class="btn btn-default btn-black btn-lg btn-block">SIGN-UP</button>
+		      <button type="submit" class="btn btn-default btn-black btn-lg btn-block" id="signup-validation">SIGN-UP</button>
+		      
 		    </form> <br>
 		    <div class="row">
 		    	<div class="col">Already have an ID?</div>

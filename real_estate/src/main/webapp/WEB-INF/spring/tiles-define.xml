@@ -34,10 +34,13 @@
 	<definition name="*" extends="base">
         <put-attribute name="body" value="/WEB-INF/views/{1}.jsp" />
     </definition>
+    <definition name="/real_estate/*" extends="no-footer-base">
+        <put-attribute name="body" value="/WEB-INF/views/real_estate/{1}.jsp" />
+    </definition>
 	<definition name="/*/*" extends="base">
         <put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp" />
     </definition>
-	<definition name="/real_estate/*/*" extends="base">
+	<definition name="/real_estate/*/*" extends="no-footer-base">
         <put-attribute name="body" value="/WEB-INF/views/real_estate/{1}/{2}.jsp" />
     </definition>
 </tiles-definitions>

@@ -4,8 +4,12 @@
 <!DOCTYPE html>
 <html lang="en">
 	<main class="pl-md-5 bd-content" role="main">
-		<div>
+		<div class="row-cols-2">
 			<img class="m-t-img" alt="notice_main" src="${pageContext.request.contextPath}/resources/assets/image/notice_main_img.png">
+			<div>
+				<ul class="navbar-nav ms-0 mb-2 mb-lg-0">
+				</ul>
+			</div>
 		</div>
 	</main>
 </html>

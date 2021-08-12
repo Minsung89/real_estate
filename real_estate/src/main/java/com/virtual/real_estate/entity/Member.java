@@ -38,7 +38,7 @@ public class Member {
 	@Column(name = "point")
 	private String point;
 
-	@Column(name = "sing_up_date")
+	@Column(name = "sing_up_date" )
 	private String singUpDate;
 
 	@Column(name = "secession_state")
@@ -47,6 +47,7 @@ public class Member {
 	@Column(name = "ph_number")
 	private String phNumber;
 	
+	@ColumnDefault("USER")
 	@Column(name = "authority")
 	private String authority;
 	

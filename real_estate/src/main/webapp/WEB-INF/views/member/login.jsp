@@ -12,7 +12,7 @@
 				</div>
 				<div class="form-group">
 				    <label for="password">Password</label>
-				    <input type="password" class="form-control" id="password" name="pass" placeholder="password">
+				    <input type="password" class="form-control" id="password" name="pass" placeholder="password" autocomplete="off">
 			    </div>
 				<button type="submit" class="btn btn-default btn-black btn-lg btn-block">Login</button>
 		    </form>
@@ -29,4 +29,6 @@
 		<div class="col-xs-7">
 			<img alt="" class="img-fluid" src="${pageContext.request.contextPath}/resources/assets/image/login_bg.png">
 		</div>
+		<script type="text/javascript">
+		</script>
     </main>

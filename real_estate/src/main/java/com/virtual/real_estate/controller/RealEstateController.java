@@ -17,6 +17,13 @@ public class RealEstateController {
         return "/real_estate/trading"; 
     }
 	
+	@RequestMapping("/test_map")
+    public String testMap(Model model) {
+		
+        return "/real_estate/test_map"; 
+    }
+	
+	
 	@RequestMapping("/notice")
     public String notice(Model model) {
 		
