@@ -29,7 +29,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
-				.antMatchers("/", "/signup", "/login", "/map", "/signup/id-check",
+				.antMatchers("/", "/signup", "/login", "/map", "/signup/id-check", "/password-change-success",
 						"/loginAuth","/notice", "/forgot-password",
 						"/notice/faq/**", "/notice/nontification/**",
 						"/about/**", "/signup-success", "/push","/push/**",

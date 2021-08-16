@@ -5,19 +5,14 @@
 <html lang="en">
 <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
 <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
-
 <style>
 .bd-navbar {
   width: 100%;
   position: absolute;
 }
 </style>
-	<div class="heading">
-        <h1>Location</h1>  
-    </div>
-    <div id="listings" class="listings"></div>
 	<div id='map' style='width: 100%; height: 100%;'></div>
-	<div style="width: 300px; background-color: rgba(0,0,0,0.5);)" class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+	<div style="width: 300px; background-color: rgba(0,0,0,0.5);" class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
 	  <div class="offcanvas-header">
 	    <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Colored with scrolling</h5>
 	    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>

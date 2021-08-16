@@ -89,6 +89,7 @@
 				hoveredStateId = null;
 			});
 			map.on('click',  (e) => {
+				console.log(e);
 				new mapboxgl.Popup({ closeOnClick: true })
 				.setLngLat([e.lngLat.wrap().lng, e.lngLat.wrap().lat])
 				.setHTML('<h1>Hello World!</h1>')

@@ -63,5 +63,18 @@ public class CustomUserDetailService implements UserDetailsService {
 		return true;
 	}
 	
+	public Boolean passwordCheck(String userId, String password) { //비밀번호 체크
+		Member m = memberRepository.findByUserId(userId);
+		if (m != null) {
+			return new BCryptPasswordEncoder().matches(password, m.getPass()); //유저O 비밀번호 O : true
+		}
+		return false;
+	}
 	
+	public void passwordChange(Member member) { //비밀번호 변경
+		BCryptPasswordEncoder bEncoder = new BCryptPasswordEncoder();
+		Member m = memberRepository.findByUserId(member.getUserId());
+		m.setPass(bEncoder.encode(member.getPass()));
+		memberRepository.save(m);
+	}
 }

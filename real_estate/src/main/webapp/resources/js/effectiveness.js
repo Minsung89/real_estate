@@ -28,6 +28,7 @@ window.onload = function(){
 }
 
 var validationKey = function(id) {
+	console.log(id)
 	id.keyup(function(e) {
 			switch (id[0].id) {
 			case 'userId': //email 

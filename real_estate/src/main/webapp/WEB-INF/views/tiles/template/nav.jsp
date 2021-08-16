@@ -14,7 +14,7 @@
 	        </div>
 	        <div class="collapse navbar-collapse" id="navbarSupportedContent">
 	            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
- 					<sec:authorize access="isAnonymous()">
+ 					<sec:authorize access="!isAuthenticated()">
         	 			<li class="nav-item"><a class="nav-link" href="<c:url value='/login' />"><button class="btn btn-secondary btn-sm px-2">Login</button></a></li>
 	              		<li class="nav-item"><a class="nav-link" href="<c:url value='/signup' />"><button class="btn btn-secondary btn-sm px-2">Sign-up</button></a></li>
                 	</sec:authorize>

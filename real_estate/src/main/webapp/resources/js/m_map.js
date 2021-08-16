@@ -11,16 +11,12 @@ window.onload = function(){
 	.setLngLat([126.97826714653111, 37.56773413818753])
 	.setPopup(new mapboxgl.Popup().setHTML('<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">우리집</button>'))
 	.addTo(map);
-	
+	 map.on('load', function() {
+	        // Insert the layer beneath any symbol layer.
+	        var layers = map.getStyle().layers;
+	        console.log(layers);
+	 });
       map.on('click', function (e) {
-        var features = map.queryRenderedFeatures(e.point, {
-          layers: ['chicago-parks']
-        });
-     
-        if (!features.length) {
-          return;
-        }
-        var feature = features[0];
 
         var popup = new mapboxgl.Popup({ offset: [0, -15] })
      

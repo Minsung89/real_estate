@@ -58,8 +58,6 @@ window.addEventListener('DOMContentLoaded', event => {
         });
     });
     
-    console.log("들어오는거지?");
-    
     $('#p-save').click(function() {
     	if($('input[name=pass]').val() == null || $('input[name=pass]').val() == ''){
     		return

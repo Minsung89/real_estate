@@ -4,46 +4,42 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 	<main class="col-9 py-md-3 pl-md-5 bd-content l-main" role="main">
 		<h1>My Profile</h1>
-		<p>
-			ID : <sec:authentication property="name"/><br/>
-			권한 : <sec:authentication property="authorities"/><br/>
-			닉네임:<sec:authentication property="principal.nickname"/><br/>
-			이메일:<span id="m_email"><sec:authentication property="principal.eMail"/></span><br/>
-			주소 : <sec:authentication property="principal.address"/><br/>
-			포인트:<sec:authentication property="principal.point"/> VP <br/>
-			국가 : <sec:authentication property="principal.nation"/> <br/>
-	 		<sec:authentication property="principal.authState" var="authState"/>
-			<c:choose>
-   			    <c:when test="${authState eq 'N'}">
-					<!-- <div class="bottom"> 
-					        <button class="btn btn-default btn-ico" data-toggle="modal" data-target="#authModal">
-					                인증하기
-					        </button> 
-					</div> -->
-					<!-- Modal --> 
-					<!-- <div class="modal fade " id="authModal" tabindex="-1" role="dialog" aria-labelledby="authModalLabel" aria-hidden="true"> 
-					        <div class="modal-dialog"> 
-					                <div class="modal-content"> 
-					                        <div class="modal-header"> 
-					                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button> 
-					                                <h4 class="modal-title" id="authModalLabel">이메일 인증하기</h4> 
-					           	             </div> 
-					                        <div class="modal-body"> 
-					                              <input placeholder="인증번호를 입력하시오"> <button>인증번호 발송</button>
-					                        </div> 
-					                </div> 
-					        </div> 
-					</div> -->
-					<h2>이메일 인증하기</h2>
-                    <input placeholder="인증번호를 입력하시오"> <button id="send_email">인증번호 발송</button><br/>
-                    <button>인증확인</button>
-					
-		        </c:when>
-				<c:when test="${authState eq 'Y'}">
-					인증했어
-		        </c:when>
-			</c:choose>
-		</p>
-		<a href="<c:url value='/my_profile/edit' />">edit</a>
+		<div>
+			<div class="mp-info row">
+				<div class="col-3" style="height: 100%; line-height: 100%; display:flex; justify-content:center; align-items:center;">
+					<img src="${pageContext.request.contextPath}/resources/assets/image/profile_face.png" style="vertical-align:middle;"/>
+				</div>
+				<div class="col row row-cols-1">
+					<ul class="mp-ul col row align-items-center">
+						<li class="col-4">
+							<!-- <b>nation</b><sec:authentication property="principal.nation"/> -->
+							<img src="${pageContext.request.contextPath}/resources/assets/image/nation/korea.png" style="height:70px; border: 1px solid #111;"/>
+						</li>
+						<li class="col-8" style=" text-align: left;">
+							<b style="font-size: 55px;"><sec:authentication property="principal.nickname"/></b>
+							<sec:authentication property="name"/>	
+						</li>
+					</ul>
+					<ul class="mp-ul row col align-items-center">
+						<li class="col"><b>Balance</b><br/><sec:authentication property="principal.point"/> VP</li>
+						<li class="col"><b>Buliding</b><br/><sec:authentication property="principal.point"/> VP</li>
+						<li class="col"><b>Wroth</b><br/><sec:authentication property="principal.point"/> VP</li>
+					</ul>
+				</div>
+			</div>
+			<div style="padding: 0 5rem;">
+				<b>Authentication required</b>
+				<sec:authentication property="principal.authState" var="authState"/>
+				<c:choose>
+	   			    <c:when test="${authState eq 'N'}">
+	                    <button id="send_email" class="btn btn-secondary btn-sm">Certified</button><br/>
+			        </c:when>
+					<c:when test="${authState eq 'Y'}">
+						<br/>인증완료
+			        </c:when>
+				</c:choose>
+			</div>
+		</div>
+			
 		<div id="msgStack"></div>
 	</main>

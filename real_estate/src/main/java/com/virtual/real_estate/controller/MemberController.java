@@ -46,7 +46,6 @@ public class MemberController {
 	
 	@GetMapping("/signup-success")
 	public String signupSuccess() {
-	
 		return "/member/signup-success";
 	}
 	
@@ -131,10 +130,7 @@ public class MemberController {
 	public void myProfileAuthSuccess(@RequestParam Map<String, Object> param) {
 		 //email, authKey 가 일치할경우 authStatus 업데이트
 		String email = String.valueOf( (String) param.get("email"));
-	
 	}
-	
-	
 	
 	@GetMapping("/settings")
     public String setting(Model model) {
@@ -142,6 +138,40 @@ public class MemberController {
         return "/member/settings/settings"; 
     }
 	
+	@GetMapping("/settings/password")
+    public String settingPassowrd(Model model) {
+        return "/member/settings/password_settings"; 
+    }
+	
+	@ResponseBody
+	@PostMapping("/settings/password")
+    public String settingPassowrdVal(@RequestParam Map<String, Object> param) {
+		String userId = String.valueOf( (String) param.get("userId"));
+		String password = String.valueOf( (String) param.get("password"));
+		System.out.println(userId);
+		System.out.println(password);
+		if(customUserDetailService.passwordCheck(userId, password)) {
+			return "passwordConfirmOk"; 
+		}
+        return "passwordConfirmNo";
+    }
+	
+	@GetMapping("/password_change")
+    public String changePassowrd() {
+        return "/member/password_change"; 
+    }
+	
+	@PostMapping("/password_change")
+	public String changePassowrd(Member member, HttpServletRequest request, HttpServletResponse response) {
+		customUserDetailService.passwordChange(member);
+		new SecurityContextLogoutHandler().logout(request, response, SecurityContextHolder.getContext().getAuthentication());
+		return "redirect:/password-change-success";
+	}
+	
+	@GetMapping("/password-change-success")
+	public String passwordChangeSuccess() {
+		return "/member/password-change-success";
+	}
 	@GetMapping("/alarm")
     public String alarm(Model model) {
 		

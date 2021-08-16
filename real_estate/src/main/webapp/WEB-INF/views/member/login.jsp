@@ -29,6 +29,4 @@
 		<div class="col-xs-7">
 			<img alt="" class="img-fluid" src="${pageContext.request.contextPath}/resources/assets/image/login_bg.png">
 		</div>
-		<script type="text/javascript">
-		</script>
     </main>

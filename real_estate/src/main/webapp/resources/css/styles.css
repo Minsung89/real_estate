@@ -20347,7 +20347,41 @@ html {
 	background-color: #212529;
 }
 .l-main{
-	margin-left: 220px;
+	padding-left: 250px;
+	padding-right: 30px;
+	width: 100%;
+}
+
+.l-main h1{
+	color: #8b8a8a;
+}
+
+.mp-info{
+	margin: 0 5rem;
+	margin-top: 10px;
+	border: 2px solid #111;
+	height: 300px;
+	
+}
+
+.mp-info-setting{
+	margin: 0 5rem;
+	margin-top: 70px;
+}
+
+
+.mp-ul{
+	list-style: none;
+	width: 100%;
+}
+
+.mp-ul li b {
+	font-size: 18px;
+}
+
+.mp-ul li{
+	float: left;
+	text-align: center;
 }
 
 .modal {
