@@ -15,7 +15,7 @@ import lombok.Data;
 public class TransactionHistory {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "seq")
 	private Long seq;
 

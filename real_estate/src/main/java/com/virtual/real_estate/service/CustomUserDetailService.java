@@ -1,8 +1,12 @@
 package com.virtual.real_estate.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -12,6 +16,7 @@ import org.springframework.stereotype.Service;
 import com.virtual.real_estate.entity.Member;
 import com.virtual.real_estate.entity.MyUserDetail;
 import com.virtual.real_estate.repository.MemberRepository;
+import com.virtual.real_estate.utils.SecurityUtil;
 
 @Service
 public class CustomUserDetailService implements UserDetailsService {
@@ -25,7 +30,7 @@ public class CustomUserDetailService implements UserDetailsService {
 	public UserDetails loadUserByUsername(String userId) throws UsernameNotFoundException { // 로그인 시
 
 		Member member = memberRepository.findByUserId(userId);
-		
+
 		if (member == null)
 			throw new UsernameNotFoundException("사용자가 입력한 아이디에 해당하는 사용자를 찾을 수 없습니다.");
 		users.userAdd(userId);
@@ -76,5 +81,29 @@ public class CustomUserDetailService implements UserDetailsService {
 		Member m = memberRepository.findByUserId(member.getUserId());
 		m.setPass(bEncoder.encode(member.getPass()));
 		memberRepository.save(m);
+	}
+	
+	public void update(Map<String,Object> param) {//수정
+		MyUserDetail myUserDetail = SecurityUtil.getCustomUser();
+		if(myUserDetail != null) {
+			Member m = memberRepository.findByUserId(myUserDetail.getUserId());
+			if(param.containsKey("nickname")) {
+				m.setNickname(param.get("nickname").toString());
+				myUserDetail.setNickname(param.get("nickname").toString());
+			}
+			if(param.containsKey("nation")) {
+				m.setNation(param.get("nation").toString());
+				myUserDetail.setNation(param.get("nation").toString());
+			}
+			if(param.containsKey("auth_state")) {
+				m.setAuthState(param.get("auth_state").toString());
+				myUserDetail.setAuthState(param.get("auth_state").toString());
+			}
+			memberRepository.save(m);
+			Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+			Authentication newAuth = new UsernamePasswordAuthenticationToken(myUserDetail, auth.getCredentials(), auth.getAuthorities());
+			SecurityContextHolder.getContext().setAuthentication(newAuth);
+		}
+
 	}
 }

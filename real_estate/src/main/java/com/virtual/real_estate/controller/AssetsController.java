@@ -30,7 +30,7 @@ public class AssetsController {
 		 
 		model.addAttribute("data",test);
 		
-        return "/member/assets/history"; 
+        return "member/assets/history"; 
     }
 	
 	@GetMapping("/assets/holdings")
@@ -52,7 +52,7 @@ public class AssetsController {
 //			
 //		model.addAttribute("data",test);
 		
-        return "/member/assets/holdings"; 
+        return "member/assets/holdings"; 
     }
 	
 }

@@ -20369,6 +20369,21 @@ html {
 	margin-top: 70px;
 }
 
+.mp-info-setting div ul li{
+	position: relative;	
+}
+
+#nickname_update-group {
+	visibility: hidden;
+}
+
+#nickname_update_ok, #nickname_update_cancel {
+	width: 50px;
+}
+
+#nickname_update_btn {
+	cursor: pointer;
+}
 
 .mp-ul{
 	list-style: none;

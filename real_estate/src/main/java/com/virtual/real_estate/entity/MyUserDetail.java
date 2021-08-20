@@ -9,6 +9,9 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import lombok.ToString;
+
+@ToString
 public class MyUserDetail implements UserDetails{
 
 	private static final long serialVersionUID = 1L;
@@ -108,6 +111,74 @@ public class MyUserDetail implements UserDetails{
 
 	public String getReferralCode() {
 		return referralCode;
+	}
+
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+	public String getPass() {
+		return pass;
+	}
+
+	public void setPass(String pass) {
+		this.pass = pass;
+	}
+
+	public String getAuthority() {
+		return authority;
+	}
+
+	public void setAuthority(String authority) {
+		this.authority = authority;
+	}
+
+	public String getSecessionState() {
+		return secessionState;
+	}
+
+	public void setSecessionState(String secessionState) {
+		this.secessionState = secessionState;
+	}
+
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public void seteMail(String eMail) {
+		this.eMail = eMail;
+	}
+
+	public void setPoint(String point) {
+		this.point = point;
+	}
+
+	public void setSingUpDate(String singUpDate) {
+		this.singUpDate = singUpDate;
+	}
+
+	public void setPhNumber(String phNumber) {
+		this.phNumber = phNumber;
+	}
+
+	public void setNation(String nation) {
+		this.nation = nation;
+	}
+
+	public void setAuthState(String authState) {
+		this.authState = authState;
+	}
+
+	public void setReferralCode(String referralCode) {
+		this.referralCode = referralCode;
 	}
 
 	

@@ -14,20 +14,20 @@ public class RealEstateController {
 	@RequestMapping("/map")
     public String map(Model model) {
 		
-        return "/real_estate/trading"; 
+        return "real_estate/trading"; 
     }
 	
 	@RequestMapping("/test_map")
     public String testMap(Model model) {
 		
-        return "/real_estate/test_map"; 
+        return "real_estate/test_map"; 
     }
 	
 	
 	@RequestMapping("/notice")
     public String notice(Model model) {
 		
-        return "/real_estate/notice"; 
+        return "real_estate/notice"; 
     }
 	
 	@RequestMapping("/market")
@@ -50,7 +50,7 @@ public class RealEstateController {
 		model.addAttribute("data",test);
 		
 		
-        return "/real_estate/market"; 
+        return "real_estate/market"; 
     }
 	
 }

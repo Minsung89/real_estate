@@ -15,7 +15,7 @@ import lombok.Data;
 public class SuggestionHistory {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "seq")
 	private Long seq;
 

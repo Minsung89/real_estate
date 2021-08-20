@@ -15,8 +15,10 @@ window.onload = function(){
     mapboxgl.accessToken = 'pk.eyJ1IjoiMnZlcnNlIiwiYSI6ImNrcmRrbTNhbjN0NW0yb3J6cGNkamkwcDAifQ.t8PYasBN9mAiYGvzd9_Ufw';
     var map = new mapboxgl.Map({
         container: 'map',
-        style: 'mapbox://styles/mapbox/streets-v11', //위성 3d
-//        style: 'mapbox://styles/2verse/cksa1niyc3ln917nph7x9nt4d', //그냥 3d
+//        style: 'mapbox://styles/mapbox/streets-v11', //위성 3d
+        style: 'mapbox://styles/2verse/ckshmqk630abm17qmq53aal07', //그냥 3d
+//        style: 'mapbox://styles/2verse/ckshha00xiz2517qwoy4omi82', //그냥 3d
+       
         center: [126.97826714653111, 37.56773413818753], zoom: 15.5, pitch: 45,
       });
 	//마커찍기

@@ -13,7 +13,8 @@
 					<ul class="mp-ul col row align-items-center">
 						<li class="col-4">
 							<!-- <b>nation</b><sec:authentication property="principal.nation"/> -->
-							<img src="${pageContext.request.contextPath}/resources/assets/image/nation/korea.png" style="height:70px; border: 1px solid #111;"/>
+						<sec:authentication property="principal.nation" var="myNation"/>
+						<img src="${pageContext.request.contextPath}/resources/assets/image/nation/${myNation }.png"  style="height:70px; "/>
 						</li>
 						<li class="col-8" style=" text-align: left;">
 							<b style="font-size: 55px;"><sec:authentication property="principal.nickname"/></b>

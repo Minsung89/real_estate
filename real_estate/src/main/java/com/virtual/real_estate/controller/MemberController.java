@@ -1,6 +1,11 @@
 package com.virtual.real_estate.controller;
 
+import java.io.File;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -21,6 +26,8 @@ import com.virtual.real_estate.entity.Member;
 import com.virtual.real_estate.entity.MyUserDetail;
 import com.virtual.real_estate.service.CustomUserDetailService;
 import com.virtual.real_estate.service.MailSendService;
+import com.virtual.real_estate.utils.SecurityUtil;
+import com.virtual.real_estate.utils.UuidUtil;
 
 @Controller
 public class MemberController {
@@ -76,12 +83,12 @@ public class MemberController {
 	
 	@GetMapping("/login")
     public String loginPage() {
-        return "/member/login"; 
+        return "member/login"; 
     }
 
 	@PostMapping("/login")
     public String loginPagePost() {
-        return "/member/login"; 
+        return "member/login"; 
     }
 	
 	@GetMapping("/logout")
@@ -92,27 +99,27 @@ public class MemberController {
 	
 	@GetMapping("/forgot-password")
     public String forgotPassword() {
-        return "/member/forgot_password"; 
+        return "member/forgot_password"; 
     }
 
 	@GetMapping("/my_profile")
     public String myProfile(Model model) {
 		
-        return "/member/my_profile/my_profile"; 
+        return "member/my_profile/my_profile"; 
     }
 	
 	@GetMapping("/my_profile/edit")
     public String myProfileEdit(Model model) {
 		
-        return "/member/my_profile/my_profile_edit"; 
+        return "member/my_profile/my_profile_edit"; 
     }
 	@ResponseBody
 	@PostMapping("my_profile/auth-email")
-	public void myProfileAuthEmail(@RequestParam Map<String, Object> param) {
+	public String myProfileAuthEmail(@RequestParam Map<String, Object> param) {
 		//임의의 authKey 생성 & 이메일 발송
-		String email = String.valueOf( (String) param.get("email"));
+		String email = String.valueOf((String) param.get("email"));
 		System.out.println("email=" + email);
-		String authKey = mss.sendAuthMail("minsung021@naver.com");
+		String authKey = mss.sendAuthMail(param);
 		System.out.println(authKey);
 //      member.setAuthKey(authKey);
 
@@ -124,6 +131,7 @@ public class MemberController {
 
     //DB에 authKey 업데이트
 //    memberService.updateAuthKey(map);
+		return authKey;
 	}
 	@ResponseBody
 	@GetMapping("my_profile/auth-success")
@@ -133,14 +141,34 @@ public class MemberController {
 	}
 	
 	@GetMapping("/settings")
-    public String setting(Model model) {
-		
-        return "/member/settings/settings"; 
+    public String setting(Model model, HttpServletRequest request) {
+		File dir = new File(request.getServletContext().getRealPath("resources/assets/image/nation/"));
+//	 	SecurityUtil.userInfoUpdate();
+	    File[] fileList = dir.listFiles();
+
+	    ArrayList<String> nation = new ArrayList<>();
+	    for(int i=0; i<fileList.length; i++) {
+	      File file = fileList[i]; 
+
+	      if(file.isFile()){
+	          nation.add(file.getName().split("\\.")[0]);
+	      }
+	    }
+		model.addAttribute("nation",nation);
+		System.out.println(UuidUtil.uuidTen());
+        return "member/settings/settings"; 
+    }
+	
+	@ResponseBody
+	@PostMapping("/settings/update")
+    public String settingUpdate(@RequestParam Map<String, Object> param) {
+		customUserDetailService.update(param);
+        return "success"; 
     }
 	
 	@GetMapping("/settings/password")
     public String settingPassowrd(Model model) {
-        return "/member/settings/password_settings"; 
+        return "member/settings/password_settings"; 
     }
 	
 	@ResponseBody
@@ -158,7 +186,7 @@ public class MemberController {
 	
 	@GetMapping("/password_change")
     public String changePassowrd() {
-        return "/member/password_change"; 
+        return "member/password_change"; 
     }
 	
 	@PostMapping("/password_change")
@@ -170,11 +198,11 @@ public class MemberController {
 	
 	@GetMapping("/password-change-success")
 	public String passwordChangeSuccess() {
-		return "/member/password-change-success";
+		return "member/password-change-success";
 	}
 	@GetMapping("/alarm")
     public String alarm(Model model) {
 		
-        return "/member/alarm"; 
+        return "member/alarm"; 
     }
 }

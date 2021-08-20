@@ -10,16 +10,16 @@ public class AboutController {
 	
 	@RequestMapping("/about_2verse")
     public String about() {
-        return "/about/about_2verse"; 
-    }
+        return "about/about_2verse"; 
+	}
 	
 	@RequestMapping("/contact_us")
     public String contactUs() {
-        return "/about/contact_us"; 
+        return "about/contact_us"; 
     }
 	
 	@RequestMapping("/update")
     public String update() {
-        return "/about/update"; 
+        return "about/update"; 
     }
 }

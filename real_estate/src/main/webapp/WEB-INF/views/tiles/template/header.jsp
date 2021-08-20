@@ -14,10 +14,12 @@
 <link href="${pageContext.request.contextPath}/resources/css/bootstrap-theme.css" rel="stylesheet" />
 <link href="${pageContext.request.contextPath}/resources/css/bootstrap.css" rel="stylesheet" />
 <link href="${pageContext.request.contextPath}/resources/css/styles.css" rel="stylesheet" />
+<link href="${pageContext.request.contextPath}/resources/css/dd.css" rel="stylesheet" />
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/scripts.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/effectiveness.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery.dd.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
 <script>
 // 전역변수 설정

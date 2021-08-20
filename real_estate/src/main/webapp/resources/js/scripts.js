@@ -68,9 +68,26 @@ window.addEventListener('DOMContentLoaded', event => {
     	console.log($('input[name=nation]').val());
 	});
     
-   $('#send_email').click(function(){   //submit 버튼을 클릭하였을 때
-		var email = $('#m_email').text(); 
-	    let sendData = {'email' : email};//폼의 이름 값을 변수 안에 담아줌
+   var validationCode; //인증코드
+   $('#send_email').click(function(){ //이메일 인증
+	   var timeleft = 60;
+	   $('#send_email').addClass('disabled');
+	   $('#send_email').css('color','#ff0000');
+	   $('#send_email').text(timeleft +"s");
+		var downloadTimer= setInterval(function(){
+			timeleft -= 1;
+			$('#send_email').text(timeleft +"s");
+			   if(timeleft <= 0){
+				   $('#send_email').css('color','#111111');
+				   $('#send_email').removeClass('disabled');
+				   $('#send_email').text("재발송");
+				   clearInterval(downloadTimer);
+			   }
+			   console.log(timeleft);
+			 }, 1000);
+		var email = $('#setting_userId').text(); 
+		var nickname = $('#setting_nickname').text();
+	    let sendData = {'email' : email, 'nickname' : nickname};//폼의 이름 값을 변수 안에 담아줌
 		console.log(sendData);
 		$.ajax({
 			type:'post',   //post 방식으로 전송
@@ -78,9 +95,85 @@ window.addEventListener('DOMContentLoaded', event => {
 			data:sendData,   //위의 변수에 담긴 데이터를 전송해준다.
 			dataType:'text',   //html 파일 형식으로 값을 담아온다.
 			success : function(data){   //파일 주고받기가 성공했을 경우. data 변수 안에 값을 담아온다.
-				console.log(data);  //현재 화면 위 id="message" 영역 안에 data안에 담긴 html 코드를 넣어준다. 
+				validationCode = data;
+				console.log(data);
 			}
 		});
 	});
+  
+   $('#email_validation_ok').click(function(){ //이메일인증 Ok
+	   var validationInput = $('#email_validation_data').val();
+	   console.log(validationInput);
+	   if(validationCode === validationInput){
+		   let sendData = {'auth_state' : 'Y'};
+		   $.ajax({
+	  			type:'post',  
+	  			url:'/settings/update',  
+	  			data:sendData,   
+	  			dataType:'text', 
+	  			success : function(data){  
+	  				if(data === 'success'){
+	  					console.log(true);
+	  					alert('인증완료');
+//	  					$('.modal').modal("hide"); //닫기 
+	  					location.reload();
+	  				}
+	  			}
+	  		 });
+		   
+	   }else{
+		   $('#email_validation_check').css('visibility','visible');
+	   }
+	   
+   });
+   
+   	//나라설정
+     $('#nationList').msDropDown(); 
+     
+     //나라 수정
+     $('#nationList').change(function() {
+    	 var selectNation = $("#nationList option:selected").val();
+    	 let sendData = {'nation' : selectNation};
+    	 $.ajax({
+  			type:'post',  
+  			url:'/settings/update',  
+  			data:sendData,   
+  			dataType:'text', 
+  			success : function(data){  
+  				if(data === 'success'){
+  					$("#my_nation_edit").attr("src", "/resources/assets/image/nation/" + selectNation + ".png");
+  				}
+  			}
+  		 });
+    	 
+     });
+     
+     //닉네임수정
+     $('#nickname_update_btn').click(function() {
+ 		$('#nickname_update-group').css('visibility', 'visible');
+      });
+
+     $('#nickname_update_ok').click(function(){ 
+    	 console.log($('#nickname_update_data').val());
+    	 let sendData = {'nickname' : $('#nickname_update_data').val()};
+    	 $.ajax({
+ 			type:'post',  
+ 			url:'/settings/update',  
+ 			data:sendData,   
+ 			dataType:'text', 
+ 			success : function(data){  
+ 				if(data === 'success'){
+ 					$('#setting_nickname').text($('#nickname_update_data').val());
+ 					$('#nickname_update-group').css('visibility','hidden');
+ 					$('#nickname_update_data').val('');
+ 				}
+ 			}
+ 		});
+     });
+	
+     $('#nickname_update_cancel').click(function(){ //취소
+    	 $('#nickname_update-group').css('visibility','hidden');
+    	 $('#nickname_update_data').val('');
+     });
 });
 

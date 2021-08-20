@@ -28,8 +28,8 @@ public class RealEstateInformation {
 	@Column(name = "price")
 	private String price;
 
-	@Column(name = "rank")
-	private String rank;
+	@Column(name = "real_rank")
+	private String realRank;
 
 	@Column(name = "nickname")
 	private String nickname;
