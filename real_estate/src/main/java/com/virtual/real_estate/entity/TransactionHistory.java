@@ -39,5 +39,9 @@ public class TransactionHistory {
 
 	@Column(name = "transaction_date")
 	private String transactionDate;
+	
+	@Column(name = "rmks")
+	private String rmks;
+
 
 }

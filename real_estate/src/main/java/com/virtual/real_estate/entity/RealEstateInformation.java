@@ -15,7 +15,6 @@ import lombok.Data;
 public class RealEstateInformation {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "assets_number")
 	private String assetsNumber;
 
@@ -42,5 +41,9 @@ public class RealEstateInformation {
 
 	@Column(name = "user_id")
 	private String userId;
+	
+	@Column(name = "rmks")
+	private String rmks;
+
 
 }

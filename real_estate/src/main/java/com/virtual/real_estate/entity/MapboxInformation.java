@@ -11,28 +11,30 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "suggestion_history")
-public class SuggestionHistory {
-	
+@Table(name = "mapbox_information")
+public class MapboxInformation {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "seq")
-	private Long seq;
-
 	@Column(name = "assets_number")
 	private String assetsNumber;
 
-	@Column(name = "suggested_user")
-	private String suggestedUser;
+	@Column(name = "building_type")
+	private String buildingType;
 
-	@Column(name = "offer_price")
-	private String offerPrice;
+	@Column(name = "coordinates")
+	private String coordinates;
 
-	@Column(name = "offer_date")
-	private String offerDate;
-	
+	@Column(name = "building_height")
+	private String buildingHeight;
+
+	@Column(name = "nation")
+	private String nation;
+
+	@Column(name = "district")
+	private String district;
+
 	@Column(name = "rmks")
 	private String rmks;
-
 
 }

@@ -39,5 +39,9 @@ public class InvestmentHistory {
 	
 	@Column(name = "additional_income")
 	private String additionalIncome;
+	
+	@Column(name = "rmks")
+	private String rmks;
+
 
 }
