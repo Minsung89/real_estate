@@ -30,7 +30,7 @@
 			    <div class="form-group">
 			   		<label>Terms and Condition </label><br>
 				    <input  type="checkbox" id="terms-checkbox">
-				    <label  for="terms-checkbox" style="user-select:none">I agree to 2Verse <a href="#">Privacy Policy</a> & <a href="#">Terms.</a></label>
+				    <label  for="terms-checkbox" style="user-select:none">I agree to 2Verse <a href="#">Privacy Policy</a> &#38; <a href="#">Terms.</a></label>
 			    </div>
 			   	<hr style="margin-bottom: 30px; background-color: #111; height: 2px; border-radius: 20px">
 		      <button type="submit" class="btn btn-default btn-black btn-lg btn-block" id="signup-validation">SIGN-UP</button>

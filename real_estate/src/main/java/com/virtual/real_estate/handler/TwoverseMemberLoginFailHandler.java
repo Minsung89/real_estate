@@ -19,7 +19,7 @@ import org.springframework.security.web.authentication.AuthenticationFailureHand
 import org.springframework.stereotype.Service;
 
 @Service
-public class MemberLoginFailHandler implements AuthenticationFailureHandler{
+public class TwoverseMemberLoginFailHandler implements AuthenticationFailureHandler{
 
 	@Override
 	public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response,

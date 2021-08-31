@@ -13,8 +13,8 @@ import lombok.Data;
 @Data
 @Entity
 @DynamicInsert
-@Table(name = "member")
-public class Member {
+@Table(name = "twoverse_member")
+public class TwoverseMember {
 
 	@Id
 	@Column(name = "user_id")
@@ -23,8 +23,8 @@ public class Member {
 	@Column(name = "pass")
 	private String pass;
 
-	@Column(name = "name")
-	private String name;
+	@Column(name = "user_name")
+	private String userName;
 
 	@Column(name = "nickname")
 	private String nickname;

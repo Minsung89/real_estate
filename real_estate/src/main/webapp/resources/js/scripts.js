@@ -153,7 +153,7 @@ window.addEventListener('DOMContentLoaded', event => {
  		$('#nickname_update-group').css('visibility', 'visible');
       });
 
-     $('#nickname_update_ok').click(function(){ 
+     $('#nickname_update_ok').click(function(){ //닉네임 확인
     	 console.log($('#nickname_update_data').val());
     	 let sendData = {'nickname' : $('#nickname_update_data').val()};
     	 $.ajax({
@@ -171,9 +171,28 @@ window.addEventListener('DOMContentLoaded', event => {
  		});
      });
 	
-     $('#nickname_update_cancel').click(function(){ //취소
+     $('#nickname_update_cancel').click(function(){ //닉네임 취소
     	 $('#nickname_update-group').css('visibility','hidden');
     	 $('#nickname_update_data').val('');
      });
+
+     $('#referral_code_copy').click(function() {
+    	 // 복사할 텍스트를 변수에 할당해줍니다.
+         var text = $('#setting_referral_code').text();
+         // input text 태그를 생성해줍니다.
+         var createInput = document.createElement("input");
+         createInput.setAttribute("type", "text");
+         // 가상으로 가져올 태그에 만들어준 input 태그를 붙여줍니다.
+         $('#setting_referral_group').append(createInput);
+         // 만든 input 태그의 value 값에 복사할 텍스트 값을 넣어줍니다.
+         createInput.value = text;
+         // 복사 기능을 수행한 후
+         createInput.select();
+         document.execCommand('copy');
+         // 가상으로 붙여주었던 input 태그를 제거해줍니다.
+         createInput.remove();
+    	 alert('복사완료')
+	 });
+
 });
 

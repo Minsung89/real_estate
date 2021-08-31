@@ -25,11 +25,11 @@
 		<put-attribute name="bady" value="" />
 	</definition>
 	
-   	<definition name="member/*/*" extends="sidebar-base">
-        <put-attribute name="body" value="/WEB-INF/views/member/{1}/{2}.jsp" />
+   	<definition name="twoverseMember/*/*" extends="sidebar-base">
+        <put-attribute name="body" value="/WEB-INF/views/twoverseMember/{1}/{2}.jsp" />
     </definition>
-    <definition name="member/*" extends="no-footer-base">
-        <put-attribute name="body" value="/WEB-INF/views/member/{1}.jsp" />
+    <definition name="twoverseMember/*" extends="no-footer-base">
+        <put-attribute name="body" value="/WEB-INF/views/twoverseMember/{1}.jsp" />
     </definition>
 	<definition name="*" extends="base">
         <put-attribute name="body" value="/WEB-INF/views/{1}.jsp" />

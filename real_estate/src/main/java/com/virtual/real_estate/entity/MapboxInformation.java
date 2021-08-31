@@ -15,7 +15,6 @@ import lombok.Data;
 public class MapboxInformation {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "assets_number")
 	private String assetsNumber;
 

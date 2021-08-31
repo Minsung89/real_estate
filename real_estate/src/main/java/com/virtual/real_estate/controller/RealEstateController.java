@@ -4,18 +4,49 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.google.gson.Gson;
+import com.virtual.real_estate.data.MapboxPersingData;
+import com.virtual.real_estate.service.RealEstateService;
 
 @Controller
 public class RealEstateController {
+
+	@Autowired
+	RealEstateService res;
+
+	
 	
 	@RequestMapping("/map")
     public String map(Model model) {
-		
         return "real_estate/trading"; 
     }
+	@ResponseBody
+	@GetMapping("/mapData")
+    public String mapData() {
+		Gson test = new Gson();
+        return test.toJson(res.mapAll(),MapboxPersingData.class); 
+    }
+	
+	@ResponseBody
+	@PostMapping("/buyABuilding")
+	public Boolean buyABuilding(@RequestBody Map<String, Object> param) {
+//		mapboxPersingData.setFeatures(param);
+		System.out.println(param.toString());
+		System.out.println(param.get("id"));
+		System.out.println(param.get("type"));
+		System.out.println(((Map<?, ?>)param.get("properties")).get("height"));
+		System.out.println(param.get("geometry").toString());
+		return res.save(param);
+	}
 	
 	@RequestMapping("/test_map")
     public String testMap(Model model) {
@@ -46,10 +77,7 @@ public class RealEstateController {
 			   data.put("proceeds", "data"+i+"="+ "+3000");
 			   test.add(data);
 		}
-		 
 		model.addAttribute("data",test);
-		
-		
         return "real_estate/market"; 
     }
 	

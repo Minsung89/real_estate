@@ -88,6 +88,14 @@
 					</li>
 					<li>
 						 <h5>REFERRAL CODE:</h5>
+						 <div class="input-group mb-3" id="setting_referral_group">
+						 
+						  <span class="input-group-text" id="setting_referral_code"><sec:authentication property="principal.referralCode"/></span>
+						  <button class="btn btn-outline-secondary" type="button" id="referral_code_copy">COPY</button>
+						</div>
+												 
+						<p><b>Share your referral code with others! <br/>
+						When another person uses your referral code to buy Land you will BOTH receive 10% credit of the purchase amount!</b></p>
 					</li>
 					<li>
 						 cancel membership

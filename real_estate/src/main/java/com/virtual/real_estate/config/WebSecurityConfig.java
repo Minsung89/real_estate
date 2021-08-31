@@ -13,7 +13,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
-import com.virtual.real_estate.handler.MemberLoginFailHandler;
 
 @EnableWebSecurity
 @Configuration
@@ -23,14 +22,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	@Qualifier(value = "customUserDetailService")
 	private UserDetailsService customUserDetailService;
 	
-//	@Autowired
-//	private MemberLoginFailHandler memberLoginFailHandler;
-	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
 				.antMatchers("/", "/signup", "/login", "/map", "/signup/id-check", "/password-change-success",
-						"/loginAuth","/notice", "/forgot-password",
+						"/loginAuth","/notice", "/forgot-password", "/mapData",
 						"/notice/faq/**", "/notice/nontification/**",
 						"/about/**", "/signup-success", "/push","/push/**",
 						"/resources/css/**", "/resources/assets/**", "/resources/js/**")
@@ -43,7 +39,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	        		.defaultSuccessUrl("/")
 	        		.usernameParameter("userId")
 	        		.passwordParameter("pass")
-//	        		.failureHandler(memberLoginFailHandler)
     		.and()
     			.logout()
     				.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))

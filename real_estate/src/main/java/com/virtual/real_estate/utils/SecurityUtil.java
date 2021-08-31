@@ -52,7 +52,7 @@ public class SecurityUtil {
 	public static String getUserId() {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		if(auth != null && !auth.getPrincipal().equals("anonymousUser")){
-			return ((MyUserDetail)auth.getAuthorities()).getUsername();
+			return ((MyUserDetail)auth.getPrincipal()).getUsername();
 		} else {
 			return null;
 		}

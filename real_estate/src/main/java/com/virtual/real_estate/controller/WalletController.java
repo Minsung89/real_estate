@@ -10,18 +10,18 @@ public class WalletController {
 	@GetMapping("/wallet/deposit")
     public String deposit(Model model) {
 		
-        return "member/wallet/deposit"; 
+        return "twoverseMember/wallet/deposit"; 
     }
 
 	@GetMapping("/wallet/withdraw")
     public String withdraw(Model model) {
 		
-        return "member/wallet/withdraw"; 
+        return "twoverseMember/wallet/withdraw"; 
     }
 	
 	@GetMapping("/wallet/details")
     public String details(Model model) {
 		
-        return "member/wallet/details"; 
+        return "twoverseMember/wallet/details"; 
     }
 }

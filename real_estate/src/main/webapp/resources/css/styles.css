@@ -20518,6 +20518,7 @@ footer dl dd a {
 	font-size : 15px;
 	color: #111;
 	text-align: right;
+	font-weight: bolder;
 }
 .re-info-btn, .re-info-grade{
 	width: 100%;

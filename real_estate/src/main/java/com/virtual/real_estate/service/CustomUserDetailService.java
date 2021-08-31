@@ -13,25 +13,26 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.virtual.real_estate.entity.Member;
+import com.virtual.real_estate.entity.TwoverseMember;
 import com.virtual.real_estate.entity.MyUserDetail;
-import com.virtual.real_estate.repository.MemberRepository;
+import com.virtual.real_estate.repository.TwoverseMemberRepository;
 import com.virtual.real_estate.utils.SecurityUtil;
+import com.virtual.real_estate.utils.UuidUtil;
 
 @Service
 public class CustomUserDetailService implements UserDetailsService {
 
 	@Autowired
-	MemberRepository memberRepository;
+	TwoverseMemberRepository twoverseMemberRepository;
 	@Autowired
 	UsersService users;
 	
 	@Override
 	public UserDetails loadUserByUsername(String userId) throws UsernameNotFoundException { // 로그인 시
 
-		Member member = memberRepository.findByUserId(userId);
+		TwoverseMember twoverseMember = twoverseMemberRepository.findByUserId(userId);
 
-		if (member == null)
+		if (twoverseMember == null)
 			throw new UsernameNotFoundException("사용자가 입력한 아이디에 해당하는 사용자를 찾을 수 없습니다.");
 		users.userAdd(userId);
 		
@@ -39,21 +40,29 @@ public class CustomUserDetailService implements UserDetailsService {
 		for (int i = 0; i < u.size(); i++) {
 			System.out.println(u.get(i));
 		}
-		System.out.println(member.toString());
+		System.out.println(twoverseMember.toString());
 		
-//		memberRepository.save(member);
-		return new MyUserDetail(member);
+//		twoverseMemberRepository.save(twoverseMember);
+		return new MyUserDetail(twoverseMember);
 	}
 
-	public Boolean save(Member member) { // 회원 가입
-		Member m = memberRepository.findByUserId(member.getUserId());
+	public Boolean save(TwoverseMember twoverseMember) { // 회원 가입
+		TwoverseMember m = twoverseMemberRepository.findByUserId(twoverseMember.getUserId());
 		if (m != null) //아이디 중복 체크
 			return false;
 		BCryptPasswordEncoder bEncoder = new BCryptPasswordEncoder();
-		member.setPass(bEncoder.encode(member.getPass()));
+		twoverseMember.setPass(bEncoder.encode(twoverseMember.getPass()));
 		try {
-			member.setEMail(member.getUserId());
-			memberRepository.save(member);
+			while (true) { //추천인 코드 생성
+				String referralCode = UuidUtil.uuidTen();
+				TwoverseMember isReferalCode = twoverseMemberRepository.findByReferralCode(referralCode);
+				if(isReferalCode == null) {
+					twoverseMember.setReferralCode(referralCode);
+					break;
+				}
+			}
+			twoverseMember.setEMail(twoverseMember.getUserId());
+			twoverseMemberRepository.save(twoverseMember);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return false;
@@ -61,32 +70,32 @@ public class CustomUserDetailService implements UserDetailsService {
 		return true;
 	}
 	
-	public Boolean isMember(String userId) {//아이디 중복 체크
-		Member m = memberRepository.findByUserId(userId);
+	public Boolean isTwoverseMember(String userId) {//아이디 중복 체크
+		TwoverseMember m = twoverseMemberRepository.findByUserId(userId);
 		if (m != null) 
 			return false;
 		return true;
 	}
 	
 	public Boolean passwordCheck(String userId, String password) { //비밀번호 체크
-		Member m = memberRepository.findByUserId(userId);
+		TwoverseMember m = twoverseMemberRepository.findByUserId(userId);
 		if (m != null) {
 			return new BCryptPasswordEncoder().matches(password, m.getPass()); //유저O 비밀번호 O : true
 		}
 		return false;
 	}
 	
-	public void passwordChange(Member member) { //비밀번호 변경
+	public void passwordChange(TwoverseMember twoverseMember) { //비밀번호 변경
 		BCryptPasswordEncoder bEncoder = new BCryptPasswordEncoder();
-		Member m = memberRepository.findByUserId(member.getUserId());
-		m.setPass(bEncoder.encode(member.getPass()));
-		memberRepository.save(m);
+		TwoverseMember m = twoverseMemberRepository.findByUserId(twoverseMember.getUserId());
+		m.setPass(bEncoder.encode(twoverseMember.getPass()));
+		twoverseMemberRepository.save(m);
 	}
 	
 	public void update(Map<String,Object> param) {//수정
 		MyUserDetail myUserDetail = SecurityUtil.getCustomUser();
 		if(myUserDetail != null) {
-			Member m = memberRepository.findByUserId(myUserDetail.getUserId());
+			TwoverseMember m = twoverseMemberRepository.findByUserId(myUserDetail.getUserId());
 			if(param.containsKey("nickname")) {
 				m.setNickname(param.get("nickname").toString());
 				myUserDetail.setNickname(param.get("nickname").toString());
@@ -99,7 +108,7 @@ public class CustomUserDetailService implements UserDetailsService {
 				m.setAuthState(param.get("auth_state").toString());
 				myUserDetail.setAuthState(param.get("auth_state").toString());
 			}
-			memberRepository.save(m);
+			twoverseMemberRepository.save(m);
 			Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 			Authentication newAuth = new UsernamePasswordAuthenticationToken(myUserDetail, auth.getCredentials(), auth.getAuthorities());
 			SecurityContextHolder.getContext().setAuthentication(newAuth);

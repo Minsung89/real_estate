@@ -3,7 +3,6 @@ package com.virtual.real_estate.entity;
 import java.util.Collection;
 import java.util.Collections;
 
-import javax.persistence.Column;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -29,18 +28,18 @@ public class MyUserDetail implements UserDetails{
 	private String authState;
 	private String referralCode;
 	
-	public MyUserDetail(Member member) {
-		this.userId = member.getUserId();
-		this.pass = member.getPass();
-		this.authority = member.getAuthority();
-		this.nickname = member.getNickname();
-		this.address = member.getAddress();
-		this.eMail = member.getEMail();
-		this.point = member.getPoint();
-		this.phNumber = member.getPhNumber();
-		this.nation = member.getNation();
-		this.authState = member.getAuthState();
-		this.referralCode = member.getReferralCode();
+	public MyUserDetail(TwoverseMember twoverseTwoverseMember) {
+		this.userId = twoverseTwoverseMember.getUserId();
+		this.pass = twoverseTwoverseMember.getPass();
+		this.authority = twoverseTwoverseMember.getAuthority();
+		this.nickname = twoverseTwoverseMember.getNickname();
+		this.address = twoverseTwoverseMember.getAddress();
+		this.eMail = twoverseTwoverseMember.getEMail();
+		this.point = twoverseTwoverseMember.getPoint();
+		this.phNumber = twoverseTwoverseMember.getPhNumber();
+		this.nation = twoverseTwoverseMember.getNation();
+		this.authState = twoverseTwoverseMember.getAuthState();
+		this.referralCode = twoverseTwoverseMember.getReferralCode();
 	}
 
 	@Override

@@ -27,8 +27,8 @@ public class AccountInformation {
 	@Column(name = "certification_date")
 	private String certificationDate;
 
-	@Column(name = "name")
-	private String name;
+	@Column(name = "user_name")
+	private String userName;
 	
 	@Column(name = "rmks")
 	private String rmks;
